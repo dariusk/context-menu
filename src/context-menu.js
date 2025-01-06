@@ -187,6 +187,7 @@ document.addEventListener('mouseup', (e) => {
 
 // Listen for contextmenu event to show menu
 document.addEventListener('click', (e) => {
+  e.preventDefault();
   if (!mouseLatch) {
     instances.forEach((menu) => {
       if (
