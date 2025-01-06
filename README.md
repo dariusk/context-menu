@@ -1,5 +1,7 @@
 # context-menu
 
+> **This is a fork of `mturco/context-menu` that makes it work with left-clicks instead of right-clicks.**
+
 A small (4.4kb / 1.7kb gzipped) JavaScript library for adding context menus to any HTML element.
 
 ```shell

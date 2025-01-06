@@ -179,24 +179,30 @@ export default class ContextMenu {
   }
 }
 
+let mouseLatch = false;
+// listen for mouseup event to unset latch
+document.addEventListener('mouseup', (e) => {
+  mouseLatch = false;
+});
+
 // Listen for contextmenu event to show menu
-document.addEventListener('contextmenu', (e) => {
+document.addEventListener('click', (e) => {
+  if (!mouseLatch) {
+    instances.forEach((menu) => {
+      if (
+        !e.target.matches(
+          `[data-contextmenu="${menu.id}"], [data-contextmenu="${menu.id}"] *`,
+        )
+      ) {
+        menu.hide();
+      }
+    });
+  }
+  mouseLatch = true;
+  console.log(e.clientX, e.clientY, e.target);
   instances.forEach((menu) => {
     if (e.target.matches(menu.selector)) {
       menu.show(e);
-    }
-  });
-});
-
-// Listen for click event to hide menu
-document.addEventListener('click', (e) => {
-  instances.forEach((menu) => {
-    if (
-      !e.target.matches(
-        `[data-contextmenu="${menu.id}"], [data-contextmenu="${menu.id}"] *`,
-      )
-    ) {
-      menu.hide();
     }
   });
 });
