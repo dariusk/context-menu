@@ -200,7 +200,6 @@ document.addEventListener('click', (e) => {
     });
   }
   mouseLatch = true;
-  console.log(e.clientX, e.clientY, e.target);
   instances.forEach((menu) => {
     if (e.target.matches(menu.selector)) {
       menu.show(e);
