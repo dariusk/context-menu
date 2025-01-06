@@ -112,8 +112,8 @@ export default class ContextMenu {
 
   // Shows context menu
   show(e) {
-    this.menu.style.left = `${e.pageX}px`;
-    this.menu.style.top = `${e.pageY}px`;
+    this.menu.style.left = `${e.pageX - 8}px`;
+    this.menu.style.top = `${e.pageY - 8}px`;
     this.menu.classList.add('is-open');
     this.target = e.target;
     // Give context menu focus
